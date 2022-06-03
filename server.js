@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 // const bodyParser = require("body-parser"); /* deprecated */
 const cors = require("cors");
@@ -26,13 +27,14 @@ db.sequelize.sync();
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Bienvenido a la API Tally Counter." });
 });
 
 require("./app/routes/turorial.routes")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.NODE_DOCKER_PORT || 8080;
+console.log(`PORT en app.listen= ${PORT}`);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

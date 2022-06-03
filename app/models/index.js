@@ -1,18 +1,18 @@
 const dbConfig = require("../config/db.config.js");
 
-const Sequelize = require("sequelize");
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
+// const cls = require("cls-hooked");
+// const namespace = cls.createNamespace("....");
+const {Sequelize} = require("sequelize");
+// Sequelize.useCLS(namespace);
+console.log(`db.Config.HOST= ${dbConfig.HOST}`);
+console.log(`dbConfig.dialect= ${dbConfig.dialect}`);
+console.log(`dbConfig.port= ${dbConfig.port}`);
+const sequelize = new Sequelize('test', 'operador', 'NiotecOp15!', {
+  host: '192.168.0.114',
   dialect: dbConfig.dialect,
-  operatorsAliases: false,
-
-  pool: {
-    max: dbConfig.pool.max,
-    min: dbConfig.pool.min,
-    acquire: dbConfig.pool.acquire,
-    idle: dbConfig.pool.idle
-  }
+  port: 3306
 });
+
 
 const db = {};
 
